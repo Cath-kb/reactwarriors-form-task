@@ -13,3 +13,66 @@ body {
 .invalid-feedback {
   display: block; 
 }
+
+.steps {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: step;
+}
+
+.step {
+  flex: 1 1 0;
+  text-align: center;
+  position: relative;
+  padding-top: 40px;
+  font-weight: bold;
+}
+
+.step:before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  top: 4px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 27px;
+  height: 27px;
+  line-height: 27px;
+  color: #fff;
+  background: #b5b5b5;
+  border-radius: 50%;
+}
+
+.step.done:before,
+.step.active:before {
+  box-shadow: 0 0 0 4px #f26120;
+}
+
+.step.done:before {
+  background: #f26120;
+}
+
+.step.active:before {
+  background: #19ddfe;
+}
+
+.step:not(:first-child):after {
+  content: '';
+  position: absolute;
+  top: calc(35px / 2 - 1px);
+  left: calc(-50% + 27px/2 + 4px);
+  right: calc(50% + 27px/2 + 4px);
+  border-top: 3px solid #b5b5b5;
+}
+
+.step.done:after,
+.step.active:after {
+  border-top-color: #f26120;
+}
+
+.step:first-child:last-child:after {
+  content: none;
+}
