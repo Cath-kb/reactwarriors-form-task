@@ -45,3 +45,5 @@
 
 
 На выходе должно получиться как в примере https://reactwarriors.github.io/reactwarriors-stage-2/
+
+Результат: [Demo](https://cath-kb.github.io/reactwarriors-form-task)
