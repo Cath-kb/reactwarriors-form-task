@@ -3,6 +3,11 @@ import React from "react"
 import TextField from "./../fields/TextField"
 import RadioGroupField from "./../fields/RadioGroupField"
 
+const genders = [
+    {id: 'male', title: 'Male'},
+    {id: 'female', title: 'Female'}
+]
+
 const Basic = ({ values, errors, onChange }) => (
   <React.Fragment>
     <TextField
@@ -52,10 +57,7 @@ const Basic = ({ values, errors, onChange }) => (
     <RadioGroupField
       title="Gender"
       name="gender"
-      options={[
-        {id: 'male', title: 'Male'},
-        {id: 'female', title: 'Female'}
-      ]}
+      options={genders}
       onChange={onChange}
       value={values.gender}
       error={errors.gender}

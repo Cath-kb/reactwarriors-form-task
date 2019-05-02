@@ -15,6 +15,7 @@ export const filterObjectByKeys = (obj, keys) => (
 
 export const getCountries = () => countries
 
+// convert from data/cities.js format to array of {id, country, name} objects
 export const getCities = () => (
   Object.keys(cities)
     .reduce((obj, key) => {
@@ -23,15 +24,15 @@ export const getCities = () => (
 )
 
 export const getCitiesByCountry = country => (
-  getCities().filter(city => city.country.toString() === country)
+  getCities().filter(city => city.country.toString() === country.toString())
 )
 
 export const getCountryNameById = id => {
-  const country = countries.find(country => country.id.toString() === id)
+  const country = countries.find(country => country.id.toString() === id.toString())
   return country ? country.name : ''
 }
 
 export const getCityNameById = id => {
-  const city = getCities().find(city => city.id.toString() === id)
+  const city = getCities().find(city => city.id.toString() === id.toString())
   return city ? city.name : ''
 }

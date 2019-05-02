@@ -22,7 +22,20 @@ const initialState = {
     avatar: '',
   },
   currentStepId: 1,
-  statusDone: [],
+  steps: {
+    "1": {
+      isDone: false
+    },
+    "2": {
+      isDone: false
+    },
+    "3": {
+      isDone: false
+    },
+    "4": {
+      isDone: false
+    },
+  },
   errors: {}
 }
 
@@ -93,20 +106,22 @@ export default class App extends React.Component {
   }
 
   onNext = () => {
-    const { values, currentStepId } = this.state
+    const { values, steps, currentStepId } = this.state
 
     const stepValues = this.getStepValues(values, currentStepId)
     const stepErrors = validate(stepValues)
     const hasErrors = Object.keys(stepErrors).length > 0
-    this.setState({ errors: stepErrors })
 
-    if (hasErrors) {
-      this.removeStepFromDone(currentStepId)
-      return
-    }
-
-    this.addStepToDone(currentStepId)
-    this.goNextStep()
+    this.setState({
+      errors: stepErrors,
+      steps: {
+        ...steps,
+        [currentStepId]: {
+          isDone: !hasErrors
+        }
+      },
+      currentStepId: this.state.currentStepId + (hasErrors ? 0 : 1)
+    })
   }
 
   onBack = () => {
@@ -134,33 +149,12 @@ export default class App extends React.Component {
     this.setState({values})
   }
 
-  goNextStep = () => {
-    this.setState({
-      currentStepId: this.state.currentStepId + 1
-    })
-  }
-
-  addStepToDone = id => {
-    const { statusDone } = this.state
-    if (!statusDone.includes(id)) {
-      this.setState({
-        statusDone: [...statusDone, id]
-      })
-    }
-  }
-
-  removeStepFromDone = id => {
-    const { statusDone } = this.state
-    if (statusDone.includes(id)) {
-      this.setState({
-        statusDone: statusDone.filter(stepId => stepId !== id)
-      })
-    }
-  }
-
   isActive = id => (this.state.currentStepId === id)
-  isDone = id => this.state.statusDone.includes(id)
+
+  isDone = id => this.state.steps[id].isDone
+
   isFirst = () => (this.state.currentStepId === 1)
+
   isLast = () => (this.state.currentStepId === steps.length)
 
   getStepValues = (values, stepId) => {
