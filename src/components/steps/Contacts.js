@@ -9,8 +9,7 @@ const renderOptions = options => options.map(option => (
   )
 )
 
-const Contacts = props => {
-  const { values, errors, onChange } = props
+const Contacts = ({ values, errors, onChange }) => {
   const countries = getCountries()
   const cities = getCitiesByCountry(values.country)
 

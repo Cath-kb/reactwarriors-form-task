@@ -1,6 +1,6 @@
 import React from "react"
 
-const FileField = ({ title, error, ...props }) => (
+const FileField = ({ label, error, ...props }) => (
   <div className="form-group">
     <div className="custom-file">
       <input
@@ -8,7 +8,7 @@ const FileField = ({ title, error, ...props }) => (
         type="file"
         {...props}
       />
-      <div className="custom-file-label">{title}</div>
+      <div className="custom-file-label">{label}</div>
     </div>
     {error && <div className="invalid-feedback">{error}</div>}
   </div>

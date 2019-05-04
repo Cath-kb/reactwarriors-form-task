@@ -1,8 +1,8 @@
 import React from "react"
 
-const SelectField = ({ title, placeholder, options, error, ...props }) => (
+const SelectField = ({ label, placeholder, options, error, ...props }) => (
   <div className="form-group">
-    <label htmlFor={props.id}>{title}</label>
+    <label htmlFor={props.id}>{label}</label>
     <select
       className={`form-control ${error ? 'is-invalid' : ''}`}
       {...props}

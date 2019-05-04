@@ -1,8 +1,8 @@
 import React from "react"
 
-const RadioGroupField = ({ title, options, value, error, ...props }) => (
+const RadioGroupField = ({ label, options, value, error, ...props }) => (
   <div className="form-group">
-    <label htmlFor={props.id}>{title}</label>
+    <label htmlFor={props.id}>{label}</label>
     {options.map(item => (
       <div className="form-check" key={item.id}>
         <input
@@ -14,7 +14,7 @@ const RadioGroupField = ({ title, options, value, error, ...props }) => (
           {...props}
         />
         <label className="form-check-label" htmlFor={item.id}>
-          {item.title}
+          {item.text}
         </label>
       </div>
       )

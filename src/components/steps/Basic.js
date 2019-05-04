@@ -4,15 +4,15 @@ import TextField from "./../fields/TextField"
 import RadioGroupField from "./../fields/RadioGroupField"
 
 const genders = [
-    {id: 'male', title: 'Male'},
-    {id: 'female', title: 'Female'}
+    {id: 'male', text: 'Male'},
+    {id: 'female', text: 'Female'}
 ]
 
 const Basic = ({ values, errors, onChange }) => (
   <React.Fragment>
     <TextField
       type="text"
-      title="First Name"
+      label="First Name"
       placeholder="Enter First Name"
       autoComplete="off"
       id="firstname"
@@ -23,7 +23,7 @@ const Basic = ({ values, errors, onChange }) => (
     />
     <TextField
       type="text"
-      title="Last Name"
+      label="Last Name"
       placeholder="Enter Last Name"
       autoComplete="off"
       id="lastname"
@@ -34,7 +34,7 @@ const Basic = ({ values, errors, onChange }) => (
     />
     <TextField
       type="password"
-      title="Password"
+      label="Password"
       placeholder="Enter password"
       autoComplete="new-password"
       id="password"
@@ -45,7 +45,7 @@ const Basic = ({ values, errors, onChange }) => (
     />
     <TextField
       type="password"
-      title="Repeat password"
+      label="Repeat password"
       placeholder="Enter repeat password"
       autoComplete="new-password"
       id="repeatPassword"
@@ -55,7 +55,7 @@ const Basic = ({ values, errors, onChange }) => (
       error={errors.repeatPassword}
     />
     <RadioGroupField
-      title="Gender"
+      label="Gender"
       name="gender"
       options={genders}
       onChange={onChange}

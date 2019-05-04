@@ -3,10 +3,7 @@ import React from "react"
 import DefaultAvatar from "./../../images/default-avatar.png"
 import FileField from "./../fields/FileField"
 
-const Avatar = props => {
-  const { values, errors, onChange } = props
-  const { avatar } = values
-
+const Avatar = ({ values: { avatar }, errors, onChange }) => {
   const onAvatarChange = event => {
     const { name, files } = event.target
     if (!files[0].type.includes('image')) return
@@ -28,7 +25,7 @@ const Avatar = props => {
         <img src={avatar || DefaultAvatar} className="w-100" alt="User Avatar" />
       </div>
       <FileField
-        title="Choose Avatar"
+        label="Choose Avatar"
         id="avatar"
         name="avatar"
         onChange={onAvatarChange}

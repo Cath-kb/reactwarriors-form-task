@@ -1,8 +1,8 @@
 import React from "react"
 
-const TextField = ({ title, error, ...props }) => (
+const TextField = ({ label, error, ...props }) => (
   <div className="form-group">
-    <label htmlFor={props.id}>{title}</label>
+    <label htmlFor={props.id}>{label}</label>
     <input
       className={`form-control ${error ? 'is-invalid' : ''}`}
       {...props}
